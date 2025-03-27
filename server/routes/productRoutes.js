@@ -8,13 +8,16 @@ const router = express.Router();
 //router.get("/:id", getProductById);
 
 // Admin/Pharmacist routes
-router.post("/", protect, createProduct);
-//router.put("/:id", protect, updateProduct);
-//router.delete("/:id", protect, deleteProduct);
-//router.get('/products', getProducts);
+// router.post("/createProduct", protect, createProduct);
+// router.put("/:id", protect, updateProduct);
+// router.delete("/:id", protect, deleteProduct);
+// router.get('/products', getProducts);
 
 // Define your routes
-router.post('c', createProduct);
+router.post("/createProduct", protect, createProduct);
+router.put("/updateProduct/:id", protect, updateProduct);
+router.delete("/deleteProduct/:id", protect, deleteProduct);
 router.get('/products', getProducts);
+
 
 module.exports = router;

@@ -20,6 +20,6 @@ const productSchema = new mongoose.Schema({
   rating: { type: Number, default: 0 },
   numReviews: { type: Number, default: 0 }
 }, { timestamps: true });
-const Product = require('../models/Product');
+// const Product = require('../models/Product');
 
 module.exports = mongoose.model("Product", productSchema);

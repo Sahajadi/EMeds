@@ -7,15 +7,16 @@ const asyncHandler = require("express-async-handler");
 // Function to create a product
 const createProduct = async (req, res) => {
   try {
-    const { name, price } = req.body;  // Ensure data is received
-    if (!name || !price) {
+    const { name, description, price, category, manufacturer, inStock, prescription, image } = req.body;  // Ensure data is received
+    if (!name || !description || !price || !category || !manufacturer || typeof inStock !== "boolean" || typeof prescription !== "boolean"  || !image) {
         return res.status(400).json({ message: "All fields are required" });
     }
 
     // Mock database save (replace with actual DB logic)
-    const newProduct = { id: Date.now(), name, price };
+    const newProduct = new Product({ name, description, price, category, manufacturer, inStock, prescription, image });
+    const savedProduct = await newProduct.save();
     
-    res.status(201).json({ message: "Product created", product: newProduct });
+    res.status(201).json({ message: "Product created", "Saved Product": savedProduct });
   } catch (error) {
       res.status(500).json({ message: error.message });
   }
@@ -33,18 +34,27 @@ const getProducts = async (req, res) => {
 // @desc    Update a product
 // @route   PUT /api/products/:id
 // @access  Private/Admin
+
+
 const updateProduct = asyncHandler(async (req, res) => {
   const { name, price, description, image, countInStock } = req.body;
 
+   // Clean the product ID by trimming it
+   const productId = req.params.id.trim();
+   
+  //find the product by id
   const product = await Product.findById(req.params.id);
 
   if (product) {
+    //update the fields
     product.name = name || product.name;
     product.price = price || product.price;
+    product.category = category || product.category;
     product.description = description || product.description;
     product.image = image || product.image;
     product.countInStock = countInStock || product.countInStock;
 
+    //save the updated product
     const updatedProduct = await product.save();
     res.json(updatedProduct);
   } else {
@@ -60,7 +70,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
   if (product) {
-    await product.remove();
+    await Product.deleteOne({ _id: req.params.id });
     res.json({ message: "Product removed" });
   } else {
     res.status(404);

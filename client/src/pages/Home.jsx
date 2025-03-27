@@ -75,6 +75,7 @@ const medicines = [
 ];
 const Home = ({ addToCart }) => {
     // Remove the duplicate medicines array from here
+    // Remove unused navigate constant since it's not being used
     
     const handleAddToCart = (medicine) => {
         addToCart({
@@ -88,22 +89,46 @@ const Home = ({ addToCart }) => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-purple-50">
             {/* Enhanced Hero Section */}
-            <header className="relative py-24 bg-gradient-to-r from-blue-600 to-purple-600 overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://i.pinimg.com/originals/7b/a9/2b/7ba92b75c5b5c671f2b88407853f9a5f.jpg')] opacity-10"></div>
-                <div className="relative max-w-7xl mx-auto text-center px-4">
-                    <h1 className="text-5xl font-bold text-white mb-6 animate-fade-in">
-                        Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-pink-300">EMeds</span>
-                    </h1>
-                    <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-                        Your trusted online pharmacy for medicines, prescriptions, and healthcare needs.
-                    </p>
-                    <Link to="/get-started" 
-                        className="inline-flex items-center px-8 py-4 rounded-full bg-white text-purple-600 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                        Get Started
-                        <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/>
-                        </svg>
-                    </Link>
+            <header className="relative py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-purple-700 overflow-hidden rounded-[3rem] shadow-xl mx-4 mt-4">
+                {/* Animated background patterns */}
+                <div className="absolute inset-0">
+                    <div className="absolute inset-0 bg-[url('https://i.pinimg.com/originals/7b/a9/2b/7ba92b75c5b5c671f2b88407853f9a5f.jpg')] opacity-10 bg-repeat rounded-[3rem]"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 rounded-[3rem]"></div>
+                </div>
+
+                {/* Floating shapes */}
+                <div className="absolute inset-0 overflow-hidden rounded-[3rem]">
+                    <div className="absolute -top-16 -left-16 w-48 h-48 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+                    <div className="absolute -bottom-16 -right-16 w-48 h-48 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+                </div>
+
+                {/* Rest of the hero section content remains the same */}
+                <div className="relative max-w-5xl mx-auto text-center px-4">
+                    <div className="space-y-6">
+                        <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 animate-fade-in">
+                            Welcome to{' '}
+                            <span className="inline-block animate-text-shimmer bg-gradient-to-r from-yellow-300 via-pink-300 to-yellow-300 bg-[200%_auto] bg-clip-text text-transparent">
+                                EMeds
+                            </span>
+                        </h1>
+                        <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-8 leading-relaxed">
+                            Your trusted online pharmacy for medicines, prescriptions, and healthcare needs.
+                        </p>
+                        <div className="flex justify-center gap-4">
+                            <Link to="/get-started" 
+                                className="group inline-flex items-center px-6 py-3 rounded-full bg-white text-purple-600 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                            >
+                                Get Started
+                                <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" 
+                                    fill="none" 
+                                    stroke="currentColor" 
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </header>
 

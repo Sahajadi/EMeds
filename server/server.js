@@ -7,8 +7,9 @@ const connectDB = require("./config/db");
 const productRoutes = require('./routes/productRoutes');
 
 
+
 // Load environment variables
-dotenv.config();
+ dotenv.config();
 
 // Connect to Database
 connectDB();

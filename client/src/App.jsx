@@ -11,6 +11,7 @@ import Checkout from "./pages/Checkout"
 import { useState } from 'react'  
 import GetStarted from './pages/GetStarted';
 import Protected from './pages/Protected'
+import OrderConfirmation from './pages/OrderConfirmation'
 
 
 
@@ -35,6 +36,8 @@ function App() {
           <Route path="/get-started" element={<GetStarted addToCart={addToCart} />} />
           <Route path="/login" element={<Login/>} />
           <Route path='/signup' element={<Signup/>} />
+          <Route path='/order-confirmation' element={<OrderConfirmation/>} />
+          <Route path="/admin" element={<AdminPanel />} />
         </Routes>
       </BrowserRouter>
     </>

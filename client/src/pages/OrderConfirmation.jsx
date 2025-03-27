@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 
+
 const OrderConfirmation = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-purple-50 py-12">

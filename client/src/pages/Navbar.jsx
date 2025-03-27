@@ -11,9 +11,9 @@ const Navbar = () => {
     navigate(`/product?search=${searchTerm}`);
   };
 
-  const loggedIn = localStorage.getItem("token");
+  const loggedIn = JSON.parse(localStorage.getItem("userdata"));
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("userdata");
     navigate("/login");
   };
 
